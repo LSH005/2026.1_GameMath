@@ -6,10 +6,16 @@ public class ClickToMove : MonoBehaviour
 {
     public PlayerMovement moveScript;
     public float moveSpeed = 5f;
+    [Header("TP")]
+    public float teleportDuration = 0.3f;
+
     Vector2 mousePos;
     Vector2 targetPos;
 
     Coroutine movingCoroutine;
+    Coroutine teleportCoroutine;
+    bool isClickMoving;
+    bool isTeleporting;
 
     public void OnPoint(InputValue value)
     {
@@ -30,22 +36,84 @@ public class ClickToMove : MonoBehaviour
                 if (hit.collider.gameObject != gameObject)
                 {
                     targetPos = hit.point;
-                    StartMove();
+
+                    if (movingCoroutine != null)
+                    {
+                        StopCoroutine(movingCoroutine);
+                    }
+                    isClickMoving = true;
+                    movingCoroutine = StartCoroutine(MoveCoroutine());
+
                     break;
                 }
             }
         }
     }
 
-    void StartMove()
+    public void OnRightClick(InputValue value)
     {
-        if (movingCoroutine != null)
+        if (isTeleporting) return;
+
+        if (isClickMoving)
         {
-            StopCoroutine(movingCoroutine);
+            isClickMoving = false;
+            moveScript.canMove = true;
+
+            if (movingCoroutine != null)
+            {
+                StopCoroutine(movingCoroutine);
+            }
         }
 
-        movingCoroutine = StartCoroutine(MoveCoroutine());
+        if (value.isPressed)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            RaycastHit[] hits = Physics.RaycastAll(ray, 50);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider.gameObject != gameObject)
+                {
+                    targetPos = hit.point;
+
+                    if (teleportCoroutine != null)
+                    {
+                        StopCoroutine(teleportCoroutine);
+                    }
+                    isTeleporting = true;
+                    teleportCoroutine = StartCoroutine(TeleportCoroutine());
+
+                    break;
+                }
+            }
+        }
     }
+
+    IEnumerator TeleportCoroutine()
+    {
+        float halfDuration = teleportDuration / 2f;
+        Vector3 originScale = transform.localScale;
+
+        float t = 0;
+        while (t < halfDuration)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, t / halfDuration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = Vector3.zero;
+        transform.position = targetPos;
+        t = 0;
+        while (t < halfDuration)
+        {
+            transform.localScale = Vector3.Lerp(Vector3.zero, originScale, t / halfDuration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = originScale;
+        isTeleporting = false;
+    }
+
 
     IEnumerator MoveCoroutine()
     {
@@ -59,6 +127,7 @@ public class ClickToMove : MonoBehaviour
             yield return null;
         }
 
+        isClickMoving = false;
         moveScript.canMove = true;
     }
 

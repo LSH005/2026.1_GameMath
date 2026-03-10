@@ -950,6 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickToMove
   moveScript: {fileID: 1629022528}
   moveSpeed: 15
+  teleportDuration: 0.25
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
