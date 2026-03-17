@@ -2,7 +2,20 @@ using UnityEngine;
 
 public class EvilCube : MonoBehaviour
 {
+    [Header("player")]
     public Transform player;
+    [Header("½Ã¾ß°¢")]
+    public float viewAngle = 45f;
+
+
+    private void Awake()
+    {
+        if (player == null)
+        {
+            this.enabled = false;
+            return;
+        }
+    }
 
     void Update()
     {
@@ -15,8 +28,9 @@ public class EvilCube : MonoBehaviour
         forward = GetNormalizedVector3(forward);
 
         float dot = DotProduct(forward,toPlayer);
+        float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
-        if (dot > 0.5f)
+        if (angle < viewAngle / 2)
         {
             Vector3 targetScale = Vector3.one;
             targetScale.y = 10;
@@ -28,11 +42,13 @@ public class EvilCube : MonoBehaviour
         }
     }
 
+    float GetDotViewAngle(float DegreeViewAngle) => 1 - (DegreeViewAngle / 180);
+
     float DotProduct(Vector3 A, Vector3 B)
     {
         return A.x * B.x + A.y * B.y + A.z * B.z;
     }
-
+    
     public Vector3 GetNormalizedVector3(Vector3 vector)
     {
         float magnitude = GetMagnitudeVector3(vector);
