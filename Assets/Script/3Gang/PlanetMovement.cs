@@ -1,27 +1,29 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlanetMovement : MonoBehaviour
 {
-    [Header("Áß½É")]
+    [Header("ì¤‘ì‹¬")]
     public Transform centerPlanet;
 
-    [Header("°Å¸®, ÀÚÀü, °øÀü")]
+    [Header("ê±°ë¦¬, ìì „, ê³µì „")]
     public float distance;
-    public float rotationSpeed; // ÀÚÀü ¼Óµµ
-    public float revolutionSpeed;   // °øÀü ¼Óµµ
+    public float rotationSpeed; // ìì „ ì†ë„
+    public float revolutionSpeed;   // ê³µì „ ì†ë„
 
     float currentRevolutionAngle;
     float currentRotationAngle;
+    float speedMâ€‹ultiplier;
 
     void Update()
     {
+        speedMâ€‹ultiplier = SolarSystemManager.Instance.Speed;
         Revolution();
         Rotation();
     }
 
     void Revolution()
     {
-        currentRevolutionAngle += revolutionSpeed * Time.deltaTime;
+        currentRevolutionAngle += revolutionSpeed * speedMâ€‹ultiplier * Time.deltaTime;
         float rad = DegToRad(currentRevolutionAngle);
         Vector3 dir = new Vector3(Mathf.Cos(rad), 0.0f, Mathf.Sin(rad));
         transform.position = centerPlanet.position + (dir * distance);
@@ -29,7 +31,7 @@ public class PlanetMovement : MonoBehaviour
 
     void Rotation()
     {
-        currentRotationAngle += rotationSpeed * Time.deltaTime;
+        currentRotationAngle += rotationSpeed * speedMâ€‹ultiplier * Time.deltaTime;
         Vector3 currentEuler = transform.eulerAngles;
         currentEuler.y = currentRotationAngle;
         transform.eulerAngles = currentEuler;
