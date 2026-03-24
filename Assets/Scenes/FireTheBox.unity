@@ -421,9 +421,11 @@ GameObject:
   m_Component:
   - component: {fileID: 571520657}
   - component: {fileID: 571520658}
+  - component: {fileID: 571520659}
   - component: {fileID: 571520656}
   - component: {fileID: 571520655}
   - component: {fileID: 571520654}
+  - component: {fileID: 571520660}
   m_Layer: 0
   m_Name: EvilCube
   m_TagString: Untagged
@@ -517,13 +519,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571520653}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.28986716, z: 0, w: 0.9570669}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -5.11, y: 0, z: 3.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 33.7, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!114 &571520658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,12 +533,57 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571520653}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66d7266e185aaa54e8fbe5429f8e1d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvilCube
   player: {fileID: 1778742737}
+  viewAngle: 45
+  viewDistance: 5
+--- !u!114 &571520659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571520653}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e9104826a9d6549a67dd9efb5f5c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpinTheBox
+  rotateSpeed: 45
+--- !u!114 &571520660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571520653}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &724057914
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 788715132}
+  - component: {fileID: 788715134}
   - component: {fileID: 788715131}
   - component: {fileID: 788715130}
   - component: {fileID: 788715133}
@@ -786,6 +834,21 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &788715134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788715129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4832d3fde700c764a83ed72e4b66540b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowCamera
+  target: {fileID: 1778742737}
+  offset: {x: 0, y: 4, z: -5}
+  smoothSpeed: 5
 --- !u!1 &843194070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1778742737}
   - component: {fileID: 1778742739}
+  - component: {fileID: 1778742741}
   - component: {fileID: 1778742738}
   - component: {fileID: 1778742736}
   - component: {fileID: 1778742735}
@@ -1475,6 +1539,19 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1778742741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778742733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e9104826a9d6549a67dd9efb5f5c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpinTheBox
+  rotateSpeed: 60
 --- !u!1 &1825584547
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovementWithTurn : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerMovementWithTurn : MonoBehaviour
     public void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
-        moveInput = new Vector3(input.x, 0, input.y);
+        moveInput = new Vector3(0, 0, input.y);
     }
 
     private void Update()
@@ -18,8 +19,8 @@ public class PlayerMovementWithTurn : MonoBehaviour
         if (GetMagnitudeVector3(moveInput) > 0)
         {
             //transform.Translate(GetNormalizedVector3(moveInput) * moveSpeed * Time.deltaTime);
-            transform.position += (GetNormalizedVector3(moveInput) * moveSpeed * Time.deltaTime);
-            LookAtDirection(moveInput);
+            transform.position += (transform.rotation * GetNormalizedVector3(moveInput) * moveSpeed * Time.deltaTime);
+            //LookAtDirection(moveInput);
         }
     }
 
