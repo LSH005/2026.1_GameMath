@@ -77,7 +77,7 @@ public class EvilThing : MonoBehaviour
             Vector3 crossProduct = GetCrossProduct(forward, toMe);
             bool attackingRight = crossProduct.y > 0;
 
-            if ((playerScript.parryingRight && attackingRight) || (!playerScript.parryingRight && !attackingRight))
+            if ((playerScript.parryingRight && attackingRight) || (playerScript.parryingLeft && !attackingRight))
             {
                 Destroy(gameObject);
             }
