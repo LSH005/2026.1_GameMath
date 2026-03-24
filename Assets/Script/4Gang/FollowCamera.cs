@@ -10,9 +10,11 @@ public class FollowCamera : MonoBehaviour
     private void LateUpdate()
     {
         //Vector3 latePos = Quaternion.Euler(0f, target.eulerAngles.y, 0) * offset;
-        Vector3 latePos = target.position + Quaternion.Euler(0f, target.eulerAngles.y, 0) * offset;
+        Vector3 latePos = target.position + Quaternion.Euler(0f, target.eulerAngles.y + 2, 0) * offset;
         transform.position = latePos;
 
-        transform.LookAt(target);
+        Vector3 lookAtPos = target.transform.position;
+        lookAtPos.y += 2f;
+        transform.LookAt(lookAtPos);
     }
 }

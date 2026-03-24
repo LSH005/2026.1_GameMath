@@ -18,8 +18,8 @@ public class PlayerMovementWithTurn : MonoBehaviour
     {
         if (GetMagnitudeVector3(moveInput) > 0)
         {
-            //transform.Translate(GetNormalizedVector3(moveInput) * moveSpeed * Time.deltaTime);
-            transform.position += (transform.rotation * GetNormalizedVector3(moveInput) * moveSpeed * Time.deltaTime);
+            transform.Translate(GetNormalizedVector3(moveInput) * moveSpeed * Time.deltaTime);
+            //transform.position += (transform.rotation * GetNormalizedVector3(moveInput) * moveSpeed * Time.deltaTime);
             //LookAtDirection(moveInput);
         }
     }
