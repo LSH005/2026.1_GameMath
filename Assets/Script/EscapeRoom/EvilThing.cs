@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EvilThing : MonoBehaviour
 {
@@ -62,7 +61,7 @@ public class EvilThing : MonoBehaviour
             EscapeRoomPlayer playerScript = player.gameObject.GetComponent<EscapeRoomPlayer>();
             if (!playerScript.parryingLeft && !playerScript.parryingRight)
             {
-                Kill();
+                EscapeRoomManager.ResetScene();
                 return;
             }
 
@@ -77,20 +76,17 @@ public class EvilThing : MonoBehaviour
             Vector3 crossProduct = GetCrossProduct(forward, toMe);
             bool attackingRight = crossProduct.y > 0;
 
-            if ((playerScript.parryingRight && attackingRight) || (playerScript.parryingLeft && !attackingRight))
+            if (playerScript.isInvincible ||
+                (playerScript.parryingRight && attackingRight) ||
+                (playerScript.parryingLeft && !attackingRight))
             {
                 Destroy(gameObject);
             }
             else
             {
-                Kill();
+                EscapeRoomManager.ResetScene();
             }
         }
-    }
-
-    void Kill()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     float GetDotProduct(Vector3 A, Vector3 B)

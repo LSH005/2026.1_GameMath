@@ -14,6 +14,7 @@ public class EscapeRoomPlayer : MonoBehaviour
     [Header("parrying?")]
     public bool parryingRight;
     public bool parryingLeft;
+    public bool isInvincible = false;
 
     Vector3 moveInput;
     float rotate;
@@ -39,6 +40,14 @@ public class EscapeRoomPlayer : MonoBehaviour
     public void OnLeftParry(InputValue value)
     {
         parryingLeft = value.isPressed;
+    }
+
+    public void OnResetStage(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            EscapeRoomManager.ResetScene();
+        }
     }
 
     private void Update()
@@ -67,4 +76,14 @@ public class EscapeRoomPlayer : MonoBehaviour
         }
     }
     float GetMagnitudeVector3(Vector3 vector) => Mathf.Sqrt((vector.x * vector.x) + (vector.y * vector.y) + (vector.z * vector.z));
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            EscapeRoomManager.StopTimer();
+            rb.linearVelocity = Vector3.zero;
+            isInvincible = true;
+        }
+    }
 }
