@@ -4991,6 +4991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078212238}
   - component: {fileID: 1078212239}
+  - component: {fileID: 1078212240}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -5007,7 +5008,7 @@ Transform:
   m_GameObject: {fileID: 1078212237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72408, y: 0.5, z: 20.83971}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5028,6 +5029,29 @@ MonoBehaviour:
   player: {fileID: 960368223}
   textUI: {fileID: 353988494}
   bestTimeTextUI: {fileID: 708406026}
+--- !u!114 &1078212240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078212237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8499e53a3c5d2b04eaeee31bfccc7e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectSetup
+  allObj:
+  - objects:
+    - {fileID: 22538340}
+    - {fileID: 30122255}
+    - {fileID: 2072647068}
+    - {fileID: 1632525290}
+    - {fileID: 428267267}
+    - {fileID: 1371189758}
+    - {fileID: 754017027}
+    posY: 0
+    scaleY: 1
 --- !u!1 &1110219070
 GameObject:
   m_ObjectHideFlags: 0
