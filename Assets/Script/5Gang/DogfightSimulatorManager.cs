@@ -14,7 +14,7 @@ public class DogfightSimulatorManager : MonoBehaviour
     [Header("인벤토리")]
     public TextMeshProUGUI inventoryText;
 
-
+    bool isAutoAttacking;
     int totalHit = 0;
     int totalCrit = 0;
 
@@ -43,6 +43,17 @@ public class DogfightSimulatorManager : MonoBehaviour
         ReloadText();
     }
 
+    private void Update()
+    {
+        if (isAutoAttacking)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Attack();
+            }
+        }
+    }
+
     public void Attack()
     {
         int damage = 30;
@@ -56,6 +67,8 @@ public class DogfightSimulatorManager : MonoBehaviour
         enemy.GetDamage(damage);
         ReloadText();
     }
+
+    public void ToggleAutoAttack() => isAutoAttacking = !isAutoAttacking;
 
     public void DropLoot()
     {
