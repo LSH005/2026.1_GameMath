@@ -68,6 +68,15 @@ public class DogfightSimulatorManager : MonoBehaviour
         ReloadText();
     }
 
+    public void InstaKill()
+    {
+        totalHit++;
+        if (RollCrit()) totalCrit++;
+
+        enemy.GetDamage(int.MaxValue);
+        ReloadText();
+    }
+
     public void ToggleAutoAttack() => isAutoAttacking = !isAutoAttacking;
 
     public void DropLoot()
@@ -131,9 +140,15 @@ public class DogfightSimulatorManager : MonoBehaviour
 
     public void BuffLegendaryRate()
     {
-        lootTable["Àü¼³"] += 1.5f;
-        lootTable["ÀÏ¹Ý"] = Mathf.Max(0f, lootTable["ÀÏ¹Ý"] - 0.5f);
-        lootTable["°í±Þ"] = Mathf.Max(0f, lootTable["°í±Þ"] - 0.5f);
-        lootTable["Èñ±Í"] = Mathf.Max(0f, lootTable["Èñ±Í"] - 0.5f);
+        string buffKey = "Àü¼³";
+        string[] nerfKeys = { "ÀÏ¹Ý", "°í±Þ", "Èñ±Í" };
+        foreach (var key in nerfKeys)
+        {
+            if (lootTable[key] > 0.25f)
+            {
+                lootTable[key] -= 0.5f;
+                lootTable[buffKey] += 0.5f;
+            }
+        }
     }
 }
