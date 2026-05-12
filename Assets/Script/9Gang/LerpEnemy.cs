@@ -35,7 +35,6 @@ public class LerpEnemy : MonoBehaviour
     private void Update()
     {
         t += Time.deltaTime / moveDuration;
-        print(t);
         if (t > 1f)
         {
             currentPosIndex++;
