@@ -40,13 +40,13 @@ public class BombLauncher : MonoBehaviour
         BombMovement bomb = Instantiate(bombPrefab, startPos.position, Quaternion.identity);
 
         Vector3 Point2 = startPos.position + (Random.onUnitSphere * Point1Range);
-        Vector3 Point4 = startPos.position + (Random.onUnitSphere * Point1Range * 3f);
-        Vector3 Point5 = startPos.position + (Random.onUnitSphere * Point1Range * 1.5f);
         Vector3 lastPoint = endPos.position + (Random.onUnitSphere * Point2Range);
-
         float distance = Vector3.Distance(Point2, lastPoint);
         Vector3 Point3 = (Point2 + lastPoint) / 2 + (Random.insideUnitSphere * (distance / 2));
-        
+        Vector3 Point4 = startPos.position + (Random.onUnitSphere * Point1Range * 3f);
+        Vector3 Point5 = startPos.position + (Random.onUnitSphere * Point1Range * 1.5f);
+
+
         bomb.points.Add(startPos.position);
         bomb.points.Add(Point2);
         bomb.points.Add(Point3);
