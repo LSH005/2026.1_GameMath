@@ -20,8 +20,8 @@ public class BilliardsGameManager : MonoBehaviour
 
     bool isP1Turn;
     bool canControl = false;
-    int redScore = 4;
-    int blueScore = 4;
+    int redScore = 3;
+    int blueScore = 3;
 
     LineRenderer lr;
 

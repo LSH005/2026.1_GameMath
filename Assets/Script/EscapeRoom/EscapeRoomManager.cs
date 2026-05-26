@@ -78,7 +78,7 @@ public class EscapeRoomManager : MonoBehaviour
         this.enabled = false;
     }
 
-    public static void ResetScene() => Instance.Instance_ResetScene();
+    public static void ResetScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     public void Instance_ResetScene()
     {

@@ -21,7 +21,7 @@ public class PlayerBall : MonoBehaviour
 
     public void Launch(Vector3 dir)
     {
-        rb.AddForce(dir, ForceMode.Impulse);
+        rb.AddForce(dir/10f, ForceMode.Impulse);
     }
 
     public bool WasMove() => Vector3.Distance(transform.position, savedPos) > 0.025f;
