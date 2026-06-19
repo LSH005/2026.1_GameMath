@@ -15,8 +15,11 @@ public class PerlinTerrain : MonoBehaviour
     public GameObject grassCubePrefab;
     public GameObject gravelCubePrefab;
 
+    public Vector3 verticalRootScale = Vector3.one;
+
     float xOffset = 0f;
     float yOffset = 0f;
+    GameObject[,] verticalRoot;
 
     enum CubeType
     {
@@ -28,6 +31,7 @@ public class PerlinTerrain : MonoBehaviour
 
     void Start()
     {
+        verticalRoot = new GameObject[width, depth];
         xOffset = Random.Range(-9999f, 9999f);
         yOffset = Random.Range(-9999f, 9999f);
         TerrainGen();
@@ -90,7 +94,23 @@ public class PerlinTerrain : MonoBehaviour
                 break;
         }
 
-        Vector3 pos = new Vector3(x, y, z);
-        Instantiate(cubePrefab, pos, Quaternion.identity).transform.SetParent(this.transform);
+        GameObject newBlock = Instantiate(cubePrefab);
+        Transform verticalPos = GetVerticalRootTransform(x, z);
+        newBlock.transform.SetParent(verticalPos, false);
+        newBlock.transform.localPosition = Vector3.up * y;
+        newBlock.name = $"Y{y}";
+    }
+
+    Transform GetVerticalRootTransform(int x, int z)
+    {
+        if (verticalRoot[x, z] == null)
+        {
+            verticalRoot[x, z] = new GameObject($"X{x} Z{z}");
+            verticalRoot[x, z].transform.SetParent(this.transform);
+            verticalRoot[x, z].transform.localPosition = new Vector3(x, 0, z);
+            verticalRoot[x, z].transform.localScale = verticalRootScale;
+        }
+
+        return verticalRoot[x, z].transform;
     }
 }
