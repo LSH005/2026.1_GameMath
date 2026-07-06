@@ -187,11 +187,11 @@ public class TurnBasedGame : MonoBehaviour
 
     private void UpdateUI()
     {
-        combatDataText.text = $"[전투 결과]" +
+        combatDataText.text = $"[전투 결과]\n" +
             $"총 턴 수: {turn + 1}\n발생한 적 : {totalEnemyCount}\n처치한 적 : {totalKillCount}\n" +
             $"공격 명중 확률 : {totalHitRate * 100f:F3}%\n치명타 확률 : {totalCritRare * 100f:F3}%\n최대~최소 대미지 : {maxDamageDealt:F1}~{minDamageDealt:F1}";
         
-        itemInventoryText .text = $"[흭득한 아이템]" +
+        itemInventoryText .text = $"[흭득한 아이템]\n" +
             $"포션 : {itemInventory["Potion"]}개 \n골드 : {itemInventory["Gold"]}개\n" +
             $"무기 : {itemInventory["Weapon"]}개\n무기(레어) : {itemInventory["Rare_Weapon"]}개\n방어구 : {itemInventory["Armor"]}개\n방어구(레어) : {itemInventory["Rare_Armor"]}개";
 

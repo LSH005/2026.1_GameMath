@@ -1463,8 +1463,8 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 2c285deb7e7882147b97d4785985cd25, type: 3}
     name: "\uB0A8\uC131\uC131 \uAC15\uD55C \uB0A8\uC131"
     MaxHP: 3
-  - sprite: {fileID: 21300000, guid: 14d6b1d42654de543b57ba63663c38a8, type: 3}
-    name: minecraft:command_block
+  - sprite: {fileID: 21300000, guid: 60436acf7cb2bae499750b2c4df550c2, type: 3}
+    name: The Earth
     MaxHP: 64
   - sprite: {fileID: 21300000, guid: 97d2823ef04b8a64bb72b035d0787c95, type: 3}
     name: Kyojuro Rengoku

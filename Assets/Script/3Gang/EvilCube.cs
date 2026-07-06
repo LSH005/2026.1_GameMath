@@ -1,5 +1,3 @@
-using Unity.Hierarchy;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class EvilCube : MonoBehaviour
@@ -25,7 +23,7 @@ public class EvilCube : MonoBehaviour
         if (GetDistance(transform.position, player.position) > viewDistance)
         {
             transform.localScale = Vector3.one;
-            Debug.Log("플레이어는 범위 밖에 있음!");
+            //Debug.Log("플레이어는 범위 밖에 있음!");
             return;
         }
 
@@ -38,8 +36,8 @@ public class EvilCube : MonoBehaviour
         forward = GetNormalizedVector3(forward);
 
         Vector3 crossProduct = GetCrossProduct(forward, toPlayer);
-        if (crossProduct.y > 0) Debug.Log("플레이어는 오른쪽에 있음");
-        else if (crossProduct.y < 0) Debug.Log("플레이어는 왼쪽에 있음");
+        //if (crossProduct.y > 0) Debug.Log("플레이어는 오른쪽에 있음");
+        //else if (crossProduct.y < 0) Debug.Log("플레이어는 왼쪽에 있음");
 
         float dot = GetDotProduct(forward, toPlayer);
         float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;

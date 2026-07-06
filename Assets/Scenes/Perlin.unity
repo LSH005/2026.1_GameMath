@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414083469}
+  - component: {fileID: 414083471}
   - component: {fileID: 414083468}
   - component: {fileID: 414083467}
   - component: {fileID: 414083470}
@@ -256,6 +257,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &414083471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414083466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3330f454854de854dbfceb84640d0228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThatCamera
+  moveSpeed: 10
+  mouseSensitivity: 2
 --- !u!1 &886976694
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,8 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2070a81f7b4bca42be08e26611b7dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomTerrain
-  width: 30
-  depth: 30
+  width: 40
+  depth: 40
   minHight: 1
   maxHight: 8
   cubePrefab: {fileID: 2608543583136315944, guid: 9dae952701aea5044a47d29c76f866e7, type: 3}
@@ -332,8 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae0fd1f2cacba2469c434d29ff201d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PerlinTerrain
-  width: 100
-  depth: 6
+  width: 50
+  depth: 50
   scale: 0.1
   maxHight: 10
   addHight: 2
@@ -342,7 +357,7 @@ MonoBehaviour:
   waterCubePrefab: {fileID: 32744655240965002, guid: 869e6e774d53da14e8ffa142943e90aa, type: 3}
   grassCubePrefab: {fileID: 884289188372453345, guid: 1ced1880df1a8884badb20ea6992aa3c, type: 3}
   gravelCubePrefab: {fileID: 5076913357435580251, guid: 69729a5b220aa8e4c942847bad59a6f9, type: 3}
-  verticalRootScale: {x: 1, y: 1, z: 0.05}
+  verticalRootScale: {x: 1, y: 1, z: 1}
 --- !u!1 &917517225
 GameObject:
   m_ObjectHideFlags: 0
